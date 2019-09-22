@@ -2,13 +2,12 @@ package com.example.android.navigation
 
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.FragmentTitleBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,9 +28,21 @@ class TitileFragment : Fragment() {
         binding.playButton.setOnClickListener{view ->
             view.findNavController().navigate(R.id.action_titileFragment_to_gameFragment)
         }
+        setHasOptionMenu(true)
         return binding.root
 
     }
+
+    override fun onCreateOptionMenu(menu: Menu, inflater: MenuInflater){
+        super.onCreateOptionsMenu(menu,inflater)
+        inflater?.inflate(R.menu.optione_menu,menu)
+    }
+    override fun onOptionItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item!!,
+                view!!.findNavController()) || super.onContextItemSelected(item)
+    }
+
+
 
 
 }
