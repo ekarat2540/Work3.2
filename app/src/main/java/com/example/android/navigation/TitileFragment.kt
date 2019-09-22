@@ -28,8 +28,9 @@ class TitileFragment : Fragment() {
                 R.layout.fragment_title, container,false)
         binding.playButton.setOnClickListener{view ->
             view.findNavController().navigate(R.id.action_titileFragment_to_gameFragment)
-        return binding.root
         }
+        return binding.root
+
     }
 
 
